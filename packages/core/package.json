@@ -1,0 +1,36 @@
+{
+  "name": "@snapfill/core",
+  "version": "0.1.0",
+  "description": "Core autofill detection, classification, and filling engine for WebViews",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./injectable": {
+      "types": "./dist/injectable.d.ts",
+      "import": "./dist/injectable.mjs",
+      "require": "./dist/injectable.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/ --ext .ts",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "jsdom": "^25.0.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  },
+  "keywords": ["autofill", "webview", "form-detection", "form-filling", "cart-detection"]
+}
