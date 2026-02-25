@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "Snapfill Demo",
+    "slug": "snapfill-demo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "snapfill-demo",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "com.snapfill.demo"
+    },
+    "android": {
+      "package": "com.snapfill.demo"
+    }
+  }
+}
