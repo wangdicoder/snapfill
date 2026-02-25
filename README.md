@@ -90,6 +90,7 @@ Uses native property setters to bypass React/Vue/Angular framework interceptors.
 | Package | Description |
 |---------|-------------|
 | `@snapfill/core` | Core detection + filling engine |
+| `@snapfill/react-native` | React Native WebView adapter (hook + component) |
 
 ## Development
 
