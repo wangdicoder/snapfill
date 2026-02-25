@@ -1,6 +1,13 @@
-# Snapfill
+<p align="center">
+  <img src="assets/logo.svg" alt="SnapFill" width="480" />
+</p>
 
-Cross-platform WebView autofill engine. Detects, classifies, and fills form fields inside WebViews. Also extracts shopping cart data.
+<p align="center">
+  <strong>Cross-platform WebView autofill engine.</strong><br/>
+  Detects, classifies, and fills form fields inside WebViews. Also extracts shopping cart data.
+</p>
+
+---
 
 ## Quick Start
 

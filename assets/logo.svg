@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" fill="none">
+  <defs>
+    <linearGradient id="bolt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="form" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="check" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#6366f1" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Icon: Rounded form card -->
+  <g filter="url(#shadow)">
+    <rect x="12" y="16" width="76" height="88" rx="12" fill="white" stroke="url(#form)" stroke-width="2.5"/>
+
+    <!-- Form field lines (unfilled) -->
+    <rect x="24" y="32" width="52" height="8" rx="3" fill="#e0e7ff"/>
+    <rect x="24" y="48" width="52" height="8" rx="3" fill="#e0e7ff"/>
+
+    <!-- Form field line (being filled - gradient bar) -->
+    <rect x="24" y="64" width="38" height="8" rx="3" fill="url(#bolt)" opacity="0.85"/>
+    <!-- Cursor blink on the filling line -->
+    <rect x="63" y="62" width="2" height="12" rx="1" fill="url(#bolt)" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0;0.6" dur="1.2s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Filled field with checkmark -->
+    <rect x="24" y="80" width="52" height="8" rx="3" fill="url(#check)" opacity="0.2"/>
+    <path d="M68 82 l3 3 l5 -5" stroke="url(#check)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <!-- Lightning bolt snap icon (overlapping top-right of card) -->
+  <g filter="url(#glow)" transform="translate(72, 8)">
+    <circle cx="12" cy="12" r="14" fill="url(#bolt)" opacity="0.12"/>
+    <path d="M14 4 L8 14 h5 l-3 10 8 -12 h-5 z" fill="url(#bolt)"/>
+  </g>
+
+  <!-- "SnapFill" wordmark -->
+  <text x="110" y="78" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="800" letter-spacing="-1.5">
+    <tspan fill="#1e1b4b">Snap</tspan><tspan fill="url(#bolt)">Fill</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="112" y="100" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" letter-spacing="3" fill="#94a3b8">WEBVIEW AUTOFILL ENGINE</text>
+</svg>
