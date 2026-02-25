@@ -7,6 +7,7 @@
     "build": "turbo run build",
     "test": "turbo run test",
     "lint": "turbo run lint",
+    "demo": "turbo run build && npx serve@latest . -l 3000 --no-clipboard && open http://localhost:3000/demo/web",
     "format": "prettier --check \"**/*.{ts,tsx,js,json,md}\"",
     "format:fix": "prettier --write \"**/*.{ts,tsx,js,json,md}\"",
     "clean": "turbo run clean"

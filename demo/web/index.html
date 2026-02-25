@@ -220,14 +220,27 @@ function clearFields() { document.querySelectorAll('input[type="text"],input[typ
 function clearLog() { document.getElementById('event-log').innerHTML = ''; }
 </script>
 
-<!-- Inline the injectable scripts (in a real app these come from @snapfill/core) -->
-<script>
-// NOTE: In production, you would import from @snapfill/core:
-//   import { snapfillScript, buildFillScript } from '@snapfill/core'
-//   webview.evaluateJavaScript(snapfillScript)
-//
-// For this demo, we load the original scripts directly.
-// Build the project first, then replace these with the built output.
+<!-- Load injectable scripts from built @snapfill/core -->
+<script type="module">
+  import {
+    formDetectorScript,
+    cartDetectorScript,
+    valueCaptureScript,
+    buildFillScript
+  } from '../../packages/core/dist/injectable.mjs';
+
+  // Store for re-detection via the "Detect Forms" button
+  window.__snapfillDetectScript = formDetectorScript;
+
+  // Execute all detection scripts in global scope
+  (0, eval)(formDetectorScript);
+  (0, eval)(cartDetectorScript);
+  (0, eval)(valueCaptureScript);
+
+  // Expose fill helper for demo buttons
+  window.__autofillFillForm = function(mappings) {
+    (0, eval)(buildFillScript(mappings));
+  };
 </script>
 </body>
 </html>
