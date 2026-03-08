@@ -87,19 +87,32 @@ Uses native property setters to bypass React/Vue/Angular framework interceptors.
 
 ## Packages
 
-| Package | Description |
-|---------|-------------|
-| `@snapfill/core` | Core detection + filling engine |
-| `@snapfill/react-native` | React Native WebView adapter (hook + component) |
+| Package | Description | Platform |
+|---------|-------------|----------|
+| `@snapfill/core` | Core detection + filling engine | Any JS runtime |
+| `@snapfill/react-native` | React Native WebView adapter (hook + component) | React Native |
+| `packages/android` | Kotlin library for Android `WebView` | Android 7.0+ |
+| `packages/ios` | Swift Package for `WKWebView` | iOS 15+ |
+
+## Platform Guides
+
+- [React Native](docs/react-native-dev.md) — hook, component, and Expo demo setup
+- [Android](docs/android-dev.md) — Kotlin `Snapfill` helper and `SnapfillWebView`
+- [iOS](docs/ios-dev.md) — Swift `Snapfill` helper and `SnapfillWebView`
 
 ## Development
 
 ```bash
-pnpm install    # Install dependencies
-pnpm build      # Build all packages
-pnpm test       # Run tests
-pnpm lint       # Lint code
+pnpm install           # Install dependencies
+pnpm build             # Build all packages
+pnpm test              # Run tests
+pnpm lint              # Lint code
+pnpm generate:native   # Generate JS assets for Android & iOS
 ```
+
+### Native Libraries
+
+The Android and iOS libraries load the same injectable scripts from `@snapfill/core`. After building core, run `pnpm generate:native` to copy the JS assets into both native packages. See the platform guides above for build and test instructions.
 
 ## Architecture
 
@@ -114,8 +127,13 @@ pnpm lint       # Lint code
 ├── injectable         # WebView-injectable script strings
 ├── constants          # Regex patterns, autocomplete maps
 └── types              # TypeScript type definitions
+
+packages/android       # Kotlin library — Snapfill, SnapfillWebView, SnapfillListener
+packages/ios           # Swift Package — Snapfill, SnapfillWebView, SnapfillDelegate
 ```
 
 Each module exports both:
 - **Functions** for direct use in web context (tree-shakeable)
 - **Script strings** (via `injectable.ts`) for WebView injection
+
+Native libraries use the script strings, injecting them via platform-specific WebView APIs (`evaluateJavascript` on Android, `WKUserScript` on iOS). A bridge shim creates `window.ReactNativeWebView.postMessage()` so the same scripts work across all platforms.
