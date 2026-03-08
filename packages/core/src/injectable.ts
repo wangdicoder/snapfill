@@ -279,14 +279,13 @@ export const snapfillScript = [formDetectorScript, cartDetectorScript, valueCapt
 );
 
 /**
- * Build a fill script string for WebView injection.
- * The returned string, when evaluated, fills form fields using the detected field map.
+ * Fill script template with a `__SNAPFILL_MAPPINGS__` placeholder.
+ * Native libraries (Android/iOS) can use this directly by replacing the placeholder
+ * with a JSON-encoded mappings object, avoiding the need to reimplement fill logic.
  */
-export function buildFillScript(mappings: AutofillMappings): string {
-  const json = JSON.stringify(mappings);
-  return `(function(){
+export const fillScriptTemplate = `(function(){
 'use strict';
-var mappings=${json};
+var mappings=__SNAPFILL_MAPPINGS__;
 if(!window.__snapfillFieldMap){console.warn('[snapfill] No field map found. Inject snapfillScript first.');return;}
 var nIS=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value');nIS=nIS&&nIS.set;
 var nTS=Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,'value');nTS=nTS&&nTS.set;
@@ -315,4 +314,11 @@ var msg=JSON.stringify({type:'formFillComplete',result:result});
 if(window.ReactNativeWebView&&window.ReactNativeWebView.postMessage)window.ReactNativeWebView.postMessage(msg);
 else if(window.parent!==window)window.parent.postMessage({snapfill:true,type:'formFillComplete',result:result},'*');
 })();`;
+
+/**
+ * Build a fill script string for WebView injection.
+ * The returned string, when evaluated, fills form fields using the detected field map.
+ */
+export function buildFillScript(mappings: AutofillMappings): string {
+  return fillScriptTemplate.replace('__SNAPFILL_MAPPINGS__', JSON.stringify(mappings));
 }

@@ -1,5 +1,5 @@
 // Public API
-export { snapfillScript, buildFillScript, formDetectorScript, cartDetectorScript, valueCaptureScript } from './injectable';
+export { snapfillScript, buildFillScript, fillScriptTemplate, formDetectorScript, cartDetectorScript, valueCaptureScript } from './injectable';
 
 // Types
 export type {
