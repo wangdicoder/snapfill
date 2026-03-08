@@ -89,10 +89,10 @@ Uses native property setters to bypass React/Vue/Angular framework interceptors.
 
 | Package | Description | Platform |
 |---------|-------------|----------|
-| `@snapfill/core` | Core detection + filling engine | Any JS runtime |
-| `@snapfill/react-native` | React Native WebView adapter (hook + component) | React Native |
-| `packages/android` | Kotlin library for Android `WebView` | Android 7.0+ |
-| `packages/ios` | Swift Package for `WKWebView` | iOS 15+ |
+| [`@snapfill/core`](packages/core) | Core detection + filling engine | Any JS runtime |
+| [`@snapfill/react-native`](packages/react-native) | React Native WebView adapter (hook + component) | React Native |
+| [`@snapfill/android`](packages/android) | Kotlin library for Android `WebView` | Android 7.0+ |
+| [`@snapfill/ios`](packages/ios) | Swift package for `WKWebView` | iOS 15+ |
 
 ## Platform Guides
 
@@ -117,23 +117,34 @@ The Android and iOS libraries load the same injectable scripts from `@snapfill/c
 ## Architecture
 
 ```
-@snapfill/core
-├── detectors/
-│   ├── formDetector   # Field detection + classification
-│   ├── cartDetector   # Shopping cart extraction
-│   └── valueCapture   # Form value monitoring
-├── fillers/
-│   └── formFiller     # Field filling with native setters
-├── injectable         # WebView-injectable script strings
-├── constants          # Regex patterns, autocomplete maps
-└── types              # TypeScript type definitions
-
-packages/android       # Kotlin library — Snapfill, SnapfillWebView, SnapfillListener
-packages/ios           # Swift Package — Snapfill, SnapfillWebView, SnapfillDelegate
+packages/
+├── core/src/                  # @snapfill/core — JS engine
+│   ├── detectors/
+│   │   ├── formDetector       # Field detection + classification
+│   │   ├── cartDetector       # Shopping cart extraction
+│   │   └── valueCapture       # Form value monitoring
+│   ├── fillers/
+│   │   └── formFiller         # Field filling with native setters
+│   ├── injectable             # WebView-injectable script strings
+│   ├── constants              # Regex patterns, autocomplete maps
+│   └── types                  # TypeScript type definitions
+│
+├── react-native/src/          # @snapfill/react-native — RN adapter
+│   ├── useSnapfill            # Hook for WebView script injection + messaging
+│   ├── SnapfillWebView        # Pre-wired WebView component
+│   └── parseMessage           # Message type parser
+│
+├── android/src/               # @snapfill/android — Kotlin library
+│   ├── Snapfill               # Script injection + message bridge
+│   ├── SnapfillWebView        # Pre-wired Android WebView
+│   ├── SnapfillListener       # Callback interface
+│   └── SnapfillModels         # Data classes
+│
+└── ios/Sources/Snapfill/      # @snapfill/ios — Swift package
+    ├── Snapfill               # Script injection + message bridge
+    ├── SnapfillWebView        # Pre-wired WKWebView
+    ├── SnapfillDelegate       # Delegate protocol
+    └── SnapfillModels         # Data structs
 ```
 
-Each module exports both:
-- **Functions** for direct use in web context (tree-shakeable)
-- **Script strings** (via `injectable.ts`) for WebView injection
-
-Native libraries use the script strings, injecting them via platform-specific WebView APIs (`evaluateJavascript` on Android, `WKUserScript` on iOS). A bridge shim creates `window.ReactNativeWebView.postMessage()` so the same scripts work across all platforms.
+Core exports both **functions** for direct web use (tree-shakeable) and **script strings** (via `injectable.ts`) for WebView injection. Native libraries inject the same scripts via platform-specific WebView APIs (`evaluateJavascript` on Android, `WKUserScript` on iOS). A bridge shim provides `window.ReactNativeWebView.postMessage()` so the same scripts work across all platforms.
