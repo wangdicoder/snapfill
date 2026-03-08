@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#1C1C1E"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Snapfill Example"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_fill_address"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="Fill Address"
+                android:textSize="12sp"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_fill_card"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:text="Fill Card"
+                android:textSize="12sp"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_fill_all"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:text="Fill All"
+                android:textSize="12sp"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/event_log"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#AEAEB2"
+                android:textSize="11sp"
+                android:fontFamily="monospace"
+                android:text="Waiting for events..." />
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>
