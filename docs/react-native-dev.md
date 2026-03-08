@@ -3,7 +3,7 @@
 ## Architecture Overview
 
 ```
-demo/react-native/          Expo demo app (consumer)
+example/react-native/          Expo example app (consumer)
     ↓ imports
 packages/react-native/      @snapfill/react-native (hook + component)
     ↓ imports
@@ -20,7 +20,7 @@ Metro (the React Native bundler) resolves these differently than Node/tsup:
 
 Metro bundles `@snapfill/react-native` from **source** so changes are instant. But `@snapfill/core` is consumed from **dist/** because its main entry (`index.ts`) re-exports DOM-dependent code (`formFiller.ts`, `cartDetector.ts`) that references `HTMLInputElement` — which doesn't exist in the React Native runtime. The `injectable` sub-path entry is safe (only strings), and that's the only runtime import used by the RN adapter.
 
-## Running the Demo
+## Running the Example
 
 ```bash
 # 1. Install dependencies
@@ -29,8 +29,8 @@ pnpm install
 # 2. Build packages (required for @snapfill/core dist/)
 pnpm build
 
-# 3. Start the demo
-cd demo/react-native
+# 3. Start the example
+cd example/react-native
 npx expo start --clear
 ```
 
@@ -50,8 +50,8 @@ Core changes require a rebuild because Metro reads from `dist/`. Run the build i
 # Terminal 1: watch core for changes
 cd packages/core && pnpm build --watch
 
-# Terminal 2: run the demo
-cd demo/react-native && npx expo start --clear
+# Terminal 2: run the example
+cd example/react-native && npx expo start --clear
 ```
 
 tsup rebuilds `dist/` on every source change. Metro sees the file change (via `watchFolders`) and hot-reloads.
@@ -94,10 +94,10 @@ These are all plain strings or functions that return strings — safe in any JS 
 
 React Native's Metro bundler requires all transitive dependencies to be resolvable via flat `node_modules` lookup. pnpm's default strict isolation breaks this. The root `.npmrc` has `shamefully-hoist=true` to hoist all packages.
 
-The demo's `metro.config.js` configures:
-- `projectRoot` — set to the demo directory (not the monorepo root)
+The example's `metro.config.js` configures:
+- `projectRoot` — set to the example directory (not the monorepo root)
 - `watchFolders` — includes `packages/` and root `node_modules/`
-- `nodeModulesPaths` — resolves from both the demo's and root's `node_modules/`
+- `nodeModulesPaths` — resolves from both the example's and root's `node_modules/`
 
 ## Key Design Decisions
 
