@@ -108,6 +108,10 @@ importers:
         version: 2.1.9(@types/node@25.3.5)(jsdom@25.0.1)(lightningcss@1.27.0)(terser@5.46.0)
 
   website:
+    dependencies:
+      '@snapfill/core':
+        specifier: workspace:*
+        version: link:../packages/core
     devDependencies:
       vitepress:
         specifier: ^1.6.0

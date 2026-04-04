@@ -15,6 +15,7 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'API', link: '/api/' },
       { text: 'Platforms', link: '/platforms/react-native' },
+      { text: 'Demo', link: '/demo' },
     ],
 
     sidebar: {
