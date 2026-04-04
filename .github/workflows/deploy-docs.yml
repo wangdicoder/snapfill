@@ -31,6 +31,9 @@ jobs:
 
       - run: pnpm install
 
+      - name: Build core
+        run: pnpm --filter @snapfill/core build
+
       - name: Build docs
         run: pnpm --filter @snapfill/website build
 
