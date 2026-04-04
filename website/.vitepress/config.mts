@@ -3,8 +3,9 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: 'SnapFill',
   description: 'Cross-platform WebView autofill engine',
+  base: '/snapfill/',
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo-icon.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/snapfill/logo-icon.svg' }],
   ],
 
   themeConfig: {
@@ -52,7 +53,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/user/snapfill' },
+      { icon: 'github', link: 'https://github.com/wangdicoder/snapfill' },
     ],
 
     footer: {
