@@ -2,8 +2,11 @@ node_modules/
 dist/
 .turbo/
 *.tsbuildinfo
+packages/core/src/injectable.gen.ts
 .DS_Store
 *.log
 coverage/
+website/.vitepress/dist/
+website/.vitepress/cache/
 .env
 .env.*

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="bolt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="form" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="check" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="10" width="76" height="84" rx="12" fill="white" stroke="url(#form)" stroke-width="2.5"/>
+  <rect x="18" y="26" width="52" height="8" rx="3" fill="#e0e7ff"/>
+  <rect x="18" y="42" width="52" height="8" rx="3" fill="#e0e7ff"/>
+  <rect x="18" y="58" width="38" height="8" rx="3" fill="url(#bolt)" opacity="0.85"/>
+  <rect x="18" y="74" width="52" height="8" rx="3" fill="url(#check)" opacity="0.2"/>
+  <path d="M62 76 l3 3 l5 -5" stroke="url(#check)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g transform="translate(66, 2)">
+    <circle cx="12" cy="12" r="14" fill="url(#bolt)" opacity="0.12"/>
+    <path d="M14 4 L8 14 h5 l-3 10 8 -12 h-5 z" fill="url(#bolt)"/>
+  </g>
+</svg>
