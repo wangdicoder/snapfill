@@ -9,13 +9,6 @@
 
 ---
 
-## Quick Start
-
-```bash
-pnpm install
-pnpm build
-```
-
 ### Usage
 
 ```ts
@@ -100,6 +93,16 @@ Uses native property setters to bypass React/Vue/Angular framework interceptors.
 - [Android](docs/android-dev.md) — Kotlin `Snapfill` helper and `SnapfillWebView`
 - [iOS](docs/ios-dev.md) — Swift `Snapfill` helper and `SnapfillWebView`
 
+## Documentation
+
+The full documentation site (with a live demo) is available at **[wangdicoder.github.io/snapfill](https://wangdicoder.github.io/snapfill/)**.
+
+To run it locally:
+
+```bash
+pnpm --filter @snapfill/website dev
+```
+
 ## Development
 
 ```bash
@@ -125,7 +128,8 @@ packages/
 │   │   └── valueCapture       # Form value monitoring
 │   ├── fillers/
 │   │   └── formFiller         # Field filling with native setters
-│   ├── injectable             # WebView-injectable script strings
+│   ├── scripts/               # Entry points for injectable IIFE bundles
+│   ├── injectable             # Re-exports generated script strings
 │   ├── constants              # Regex patterns, autocomplete maps
 │   └── types                  # TypeScript type definitions
 │
@@ -147,4 +151,4 @@ packages/
     └── SnapfillModels         # Data structs
 ```
 
-Core exports both **functions** for direct web use (tree-shakeable) and **script strings** (via `injectable.ts`) for WebView injection. Native libraries inject the same scripts via platform-specific WebView APIs (`evaluateJavascript` on Android, `WKUserScript` on iOS). A bridge shim provides `window.ReactNativeWebView.postMessage()` so the same scripts work across all platforms.
+Core exports both **functions** for direct web use (tree-shakeable) and **script strings** for WebView injection. The injectable scripts are generated at build time from the same typed source modules (via `scripts/` entry points bundled with esbuild), ensuring a single source of truth. Native libraries inject these scripts via platform-specific WebView APIs (`evaluateJavascript` on Android, `WKUserScript` on iOS). A bridge shim provides `window.ReactNativeWebView.postMessage()` so the same scripts work across all platforms.
