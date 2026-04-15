@@ -93,7 +93,7 @@ onMounted(async () => {
     cartDetectorScript,
     valueCaptureScript,
     buildFillScript,
-  } = await import('@snapfill/core');
+  } = await import('@snap-fill/core/injectable');
 
   // Execute detection scripts in global scope
   (0, eval)(formDetectorScript);
