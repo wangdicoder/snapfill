@@ -29,13 +29,13 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      - run: pnpm install
+      - run: pnpm install --frozen-lockfile
 
       - name: Build core
-        run: pnpm --filter @snapfill/core build
+        run: pnpm --filter @snap-fill/core build
 
       - name: Build docs
-        run: pnpm --filter @snapfill/website build
+        run: pnpm --filter @snap-fill/website build
 
       - uses: actions/upload-pages-artifact@v3
         with:
