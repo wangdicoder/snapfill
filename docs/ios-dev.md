@@ -5,20 +5,20 @@
 ```
 packages/ios/                              Swift Package
     ↓ loads at runtime
-packages/ios/Sources/Snapfill/Resources/   snapfill.js + snapfill-fill.js (generated from @snapfill/core)
+packages/ios/Sources/Snapfill/Resources/   snapfill.js + snapfill-fill.js (generated from @snap-fill/core)
 ```
 
-The iOS library loads the same injectable scripts that `@snapfill/react-native` uses. It creates a `window.ReactNativeWebView` shim that routes `postMessage` calls to a `WKScriptMessageHandler`, so the scripts work unchanged.
+The iOS library loads the same injectable scripts that `@snap-fill/react-native` uses. It creates a `window.ReactNativeWebView` shim that routes `postMessage` calls to a `WKScriptMessageHandler`, so the scripts work unchanged.
 
 ## Setup
 
 ### Generate JavaScript Assets
 
-The JS assets must be generated from `@snapfill/core` before building:
+The JS assets must be generated from `@snap-fill/core` before building:
 
 ```bash
 pnpm install
-pnpm build                    # Build @snapfill/core
+pnpm build                    # Build @snap-fill/core
 pnpm generate:native          # Generates snapfill.js + snapfill-fill.js into Resources/
 ```
 

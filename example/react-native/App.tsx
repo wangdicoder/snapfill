@@ -17,7 +17,7 @@ import {
   type AutofillFieldType,
   type AutofillMappings,
   type FillResult,
-} from '@snapfill/react-native';
+} from '@snap-fill/react-native';
 
 import { CHECKOUT_HTML } from './assets/checkout';
 

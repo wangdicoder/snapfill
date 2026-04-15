@@ -1,5 +1,5 @@
 {
-  "name": "@snapfill/website",
+  "name": "@snap-fill/website",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "preview": "vitepress preview"
   },
   "dependencies": {
-    "@snapfill/core": "workspace:*"
+    "@snap-fill/core": "workspace:*"
   },
   "devDependencies": {
     "vitepress": "^1.6.0",

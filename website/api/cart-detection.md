@@ -1,6 +1,6 @@
 # Cart Detection
 
-Functions for extracting shopping cart data from web pages. Import from `@snapfill/core`.
+Functions for extracting shopping cart data from web pages. Import from `@snap-fill/core`.
 
 ## `detectCart()`
 
@@ -13,7 +13,7 @@ Detects cart data using all sources in priority order. Returns the first success
 Priority: JSON-LD → Microdata → Open Graph → DOM Heuristics
 
 ```ts
-import { detectCart } from '@snapfill/core';
+import { detectCart } from '@snap-fill/core';
 
 const cart = detectCart();
 if (cart) {

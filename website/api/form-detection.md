@@ -1,6 +1,6 @@
 # Form Detection
 
-Functions for detecting and classifying form fields. Import from `@snapfill/core`.
+Functions for detecting and classifying form fields. Import from `@snap-fill/core`.
 
 ## `scanForFields(root?)`
 
@@ -16,7 +16,7 @@ Two-pass scan that detects and classifies all form fields in the given root.
 **Returns:** [`ScanResult`](/api/types#scanresult) with detected field types and a map of field type to element
 
 ```ts
-import { scanForFields } from '@snapfill/core';
+import { scanForFields } from '@snap-fill/core';
 
 const { fields, fieldMap } = scanForFields(document);
 // fields: ['firstName', 'lastName', 'email', ...]

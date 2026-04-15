@@ -1,11 +1,11 @@
 # React Native
 
-`@snapfill/react-native` provides a hook and a pre-wired component for use with [react-native-webview](https://github.com/nicejsonschema/react-native-webview).
+`@snap-fill/react-native` provides a hook and a pre-wired component for use with [react-native-webview](https://github.com/nicejsonschema/react-native-webview).
 
 ## Installation
 
 ```sh
-pnpm add @snapfill/core @snapfill/react-native react-native-webview
+pnpm add @snap-fill/core @snap-fill/react-native react-native-webview
 ```
 
 ## Option A: `useSnapfill` Hook
@@ -15,7 +15,7 @@ The hook gives you full control — wire it into any WebView:
 ```tsx
 import { useRef } from 'react';
 import { WebView } from 'react-native-webview';
-import { useSnapfill } from '@snapfill/react-native';
+import { useSnapfill } from '@snap-fill/react-native';
 
 function CheckoutScreen() {
   const webViewRef = useRef(null);
@@ -88,7 +88,7 @@ useSnapfill(webViewRef, callbacks, options?)
 A pre-wired WebView component with SnapFill built in:
 
 ```tsx
-import { SnapfillWebView } from '@snapfill/react-native';
+import { SnapfillWebView } from '@snap-fill/react-native';
 
 function CheckoutScreen() {
   return (

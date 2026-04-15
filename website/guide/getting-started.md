@@ -5,15 +5,15 @@
 ::: code-group
 
 ```sh [pnpm]
-pnpm add @snapfill/core
+pnpm add @snap-fill/core
 ```
 
 ```sh [npm]
-npm install @snapfill/core
+npm install @snap-fill/core
 ```
 
 ```sh [yarn]
-yarn add @snapfill/core
+yarn add @snap-fill/core
 ```
 
 :::
@@ -21,7 +21,7 @@ yarn add @snapfill/core
 For React Native, also install the adapter:
 
 ```sh
-pnpm add @snapfill/react-native
+pnpm add @snap-fill/react-native
 ```
 
 ## Quick Start
@@ -31,8 +31,8 @@ pnpm add @snapfill/react-native
 The most common usage — inject SnapFill into a WebView and communicate via messages:
 
 ```ts
-import { snapfillScript, buildFillScript } from '@snapfill/core';
-import type { AutofillMappings, AutofillMessage } from '@snapfill/core';
+import { snapfillScript, buildFillScript } from '@snap-fill/core';
+import type { AutofillMappings, AutofillMessage } from '@snap-fill/core';
 
 // 1. Inject the detection script into any WebView
 webview.evaluateJavaScript(snapfillScript);
@@ -76,7 +76,7 @@ webview.evaluateJavaScript(buildFillScript(mappings));
 You can also use SnapFill functions directly in a web page without message passing:
 
 ```ts
-import { scanForFields, fillForm } from '@snapfill/core';
+import { scanForFields, fillForm } from '@snap-fill/core';
 
 // Detect fields
 const { fields, fieldMap } = scanForFields(document);
@@ -94,10 +94,10 @@ console.log(`Filled ${result.filled} of ${result.total} fields`);
 
 | Package | Description | Platform |
 |---------|-------------|----------|
-| `@snapfill/core` | Core detection + filling engine | Any JS runtime |
-| `@snapfill/react-native` | React Native WebView adapter | React Native |
-| `@snapfill/android` | Kotlin library for Android `WebView` | Android 7.0+ |
-| `@snapfill/ios` | Swift package for `WKWebView` | iOS 15+ |
+| `@snap-fill/core` | Core detection + filling engine | Any JS runtime |
+| `@snap-fill/react-native` | React Native WebView adapter | React Native |
+| `@snap-fill/android` | Kotlin library for Android `WebView` | Android 7.0+ |
+| `@snap-fill/ios` | Swift package for `WKWebView` | iOS 15+ |
 
 ## Next Steps
 

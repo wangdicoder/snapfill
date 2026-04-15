@@ -1,6 +1,6 @@
 # Injectable Scripts
 
-Pre-built script strings for WebView injection. Import from `@snapfill/core` or `@snapfill/core/injectable`.
+Pre-built script strings for WebView injection. Import from `@snap-fill/core` or `@snap-fill/core/injectable`.
 
 ## `snapfillScript`
 

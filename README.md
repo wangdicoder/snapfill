@@ -12,8 +12,8 @@
 ### Usage
 
 ```ts
-import { snapfillScript, buildFillScript } from '@snapfill/core';
-import type { AutofillMappings, AutofillMessage } from '@snapfill/core';
+import { snapfillScript, buildFillScript } from '@snap-fill/core';
+import type { AutofillMappings, AutofillMessage } from '@snap-fill/core';
 
 // 1. Inject the detection script into any WebView
 webview.evaluateJavaScript(snapfillScript);
@@ -82,10 +82,10 @@ Uses native property setters to bypass React/Vue/Angular framework interceptors.
 
 | Package | Description | Platform |
 |---------|-------------|----------|
-| [`@snapfill/core`](packages/core) | Core detection + filling engine | Any JS runtime |
-| [`@snapfill/react-native`](packages/react-native) | React Native WebView adapter (hook + component) | React Native |
-| [`@snapfill/android`](packages/android) | Kotlin library for Android `WebView` | Android 7.0+ |
-| [`@snapfill/ios`](packages/ios) | Swift package for `WKWebView` | iOS 15+ |
+| [`@snap-fill/core`](packages/core) | Core detection + filling engine | Any JS runtime |
+| [`@snap-fill/react-native`](packages/react-native) | React Native WebView adapter (hook + component) | React Native |
+| [`@snap-fill/android`](packages/android) | Kotlin library for Android `WebView` | Android 7.0+ |
+| [`@snap-fill/ios`](packages/ios) | Swift package for `WKWebView` | iOS 15+ |
 
 ## Platform Guides
 
@@ -100,7 +100,7 @@ The full documentation site (with a live demo) is available at **[wangdicoder.gi
 To run it locally:
 
 ```bash
-pnpm --filter @snapfill/website dev
+pnpm --filter @snap-fill/website dev
 ```
 
 ## Development
@@ -115,13 +115,13 @@ pnpm generate:native   # Generate JS assets for Android & iOS
 
 ### Native Libraries
 
-The Android and iOS libraries load the same injectable scripts from `@snapfill/core`. After building core, run `pnpm generate:native` to copy the JS assets into both native packages. See the platform guides above for build and test instructions.
+The Android and iOS libraries load the same injectable scripts from `@snap-fill/core`. After building core, run `pnpm generate:native` to copy the JS assets into both native packages. See the platform guides above for build and test instructions.
 
 ## Architecture
 
 ```
 packages/
-├── core/src/                  # @snapfill/core — JS engine
+├── core/src/                  # @snap-fill/core — JS engine
 │   ├── detectors/
 │   │   ├── formDetector       # Field detection + classification
 │   │   ├── cartDetector       # Shopping cart extraction
@@ -133,18 +133,18 @@ packages/
 │   ├── constants              # Regex patterns, autocomplete maps
 │   └── types                  # TypeScript type definitions
 │
-├── react-native/src/          # @snapfill/react-native — RN adapter
+├── react-native/src/          # @snap-fill/react-native — RN adapter
 │   ├── useSnapfill            # Hook for WebView script injection + messaging
 │   ├── SnapfillWebView        # Pre-wired WebView component
 │   └── parseMessage           # Message type parser
 │
-├── android/src/               # @snapfill/android — Kotlin library
+├── android/src/               # @snap-fill/android — Kotlin library
 │   ├── Snapfill               # Script injection + message bridge
 │   ├── SnapfillWebView        # Pre-wired Android WebView
 │   ├── SnapfillListener       # Callback interface
 │   └── SnapfillModels         # Data classes
 │
-└── ios/Sources/Snapfill/      # @snapfill/ios — Swift package
+└── ios/Sources/Snapfill/      # @snap-fill/ios — Swift package
     ├── Snapfill               # Script injection + message bridge
     ├── SnapfillWebView        # Pre-wired WKWebView
     ├── SnapfillDelegate       # Delegate protocol

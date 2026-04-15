@@ -5,20 +5,20 @@
 ```
 packages/android/                  Kotlin library (AAR)
     ↓ loads at runtime
-packages/android/src/main/assets/  snapfill.js + snapfill-fill.js (generated from @snapfill/core)
+packages/android/src/main/assets/  snapfill.js + snapfill-fill.js (generated from @snap-fill/core)
 ```
 
-The Android library loads the same injectable scripts that `@snapfill/react-native` uses. It creates a `window.ReactNativeWebView` shim that routes `postMessage` calls to a native `@JavascriptInterface` bridge, so the scripts work unchanged.
+The Android library loads the same injectable scripts that `@snap-fill/react-native` uses. It creates a `window.ReactNativeWebView` shim that routes `postMessage` calls to a native `@JavascriptInterface` bridge, so the scripts work unchanged.
 
 ## Setup
 
 ### Generate JavaScript Assets
 
-The JS assets must be generated from `@snapfill/core` before building:
+The JS assets must be generated from `@snap-fill/core` before building:
 
 ```bash
 pnpm install
-pnpm build                    # Build @snapfill/core
+pnpm build                    # Build @snap-fill/core
 pnpm generate:native          # Generates snapfill.js + snapfill-fill.js into assets/
 ```
 

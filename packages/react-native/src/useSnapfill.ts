@@ -7,14 +7,14 @@ import {
   cartDetectorScript,
   valueCaptureScript,
   buildFillScript,
-} from '@snapfill/core/injectable';
+} from '@snap-fill/core/injectable';
 
 import { DEFAULT_SNAPFILL_OPTIONS } from './constants';
 import { parseSnapfillMessage } from './parseMessage';
 import type { SnapfillCallbacks, SnapfillHandle, SnapfillOptions, WebViewLike } from './types';
 
 /**
- * React Native hook that wires up @snapfill/core scripts to a WebView ref.
+ * React Native hook that wires up @snap-fill/core scripts to a WebView ref.
  *
  * Returns a stable `onMessage` handler and `injectedJavaScript` string to pass
  * to the WebView, plus `fillForm` and `reinject` methods.

@@ -1,6 +1,6 @@
 # Types
 
-All types are exported from `@snapfill/core`.
+All types are exported from `@snap-fill/core`.
 
 ## `AutofillFieldType`
 

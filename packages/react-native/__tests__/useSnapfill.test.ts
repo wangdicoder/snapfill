@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 // vi.mock calls are hoisted — factory must not reference top-level variables.
-vi.mock('@snapfill/core/injectable', () => ({
+vi.mock('@snap-fill/core/injectable', () => ({
   formDetectorScript: '/* formDetector */',
   cartDetectorScript: '/* cartDetector */',
   valueCaptureScript: '/* valueCapture */',
@@ -17,7 +17,7 @@ vi.mock('react', () => ({
   useRef: (init?: unknown) => (init !== undefined ? { current: init } : mockCallbacksRef),
 }));
 
-import { buildFillScript } from '@snapfill/core/injectable';
+import { buildFillScript } from '@snap-fill/core/injectable';
 import { useSnapfill } from '../src/useSnapfill';
 import type { SnapfillCallbacks } from '../src/types';
 

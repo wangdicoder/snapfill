@@ -1,12 +1,12 @@
 # iOS
 
-`@snapfill/ios` is a Swift package for integrating SnapFill with `WKWebView`. Requires iOS 15+.
+`@snap-fill/ios` is a Swift package for integrating SnapFill with `WKWebView`. Requires iOS 15+.
 
 ## Setup
 
 ### 1. Generate JavaScript Assets
 
-The JS assets must be generated from `@snapfill/core` before building:
+The JS assets must be generated from `@snap-fill/core` before building:
 
 ```bash
 pnpm install

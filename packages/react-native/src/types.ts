@@ -5,7 +5,7 @@ import type {
   AutofillCartInfo,
   AutofillMessage,
   FillResult,
-} from '@snapfill/core';
+} from '@snap-fill/core';
 
 /** Minimal interface for the WebView ref — avoids tight coupling to a specific react-native-webview version. */
 export interface WebViewLike {

@@ -6,7 +6,7 @@
       "outputs": ["dist/**", ".vitepress/dist/**"]
     },
     "test": {
-      "dependsOn": ["build"]
+      "dependsOn": ["^build"]
     },
     "lint": {},
     "clean": {

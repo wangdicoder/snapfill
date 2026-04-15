@@ -5,20 +5,20 @@
 ```
 example/react-native/          Expo example app (consumer)
     ↓ imports
-packages/react-native/      @snapfill/react-native (hook + component)
+packages/react-native/      @snap-fill/react-native (hook + component)
     ↓ imports
-packages/core/               @snapfill/core (detection scripts + fill logic)
+packages/core/               @snap-fill/core (detection scripts + fill logic)
 ```
 
 Metro (the React Native bundler) resolves these differently than Node/tsup:
 
 | Package | Node / tsup | Metro (RN) |
 |---|---|---|
-| `@snapfill/react-native` | `dist/index.js` via `main` field | `src/index.ts` via `react-native` field |
-| `@snapfill/core` | `dist/index.js` via `main` field | `dist/index.js` (same) |
-| `@snapfill/core/injectable` | `dist/injectable.js` via `exports` map | `injectable.js` shim → `dist/injectable.js` |
+| `@snap-fill/react-native` | `dist/index.js` via `main` field | `src/index.ts` via `react-native` field |
+| `@snap-fill/core` | `dist/index.js` via `main` field | `dist/index.js` (same) |
+| `@snap-fill/core/injectable` | `dist/injectable.js` via `exports` map | `injectable.js` shim → `dist/injectable.js` |
 
-Metro bundles `@snapfill/react-native` from **source** so changes are instant. But `@snapfill/core` is consumed from **dist/** because its main entry (`index.ts`) re-exports DOM-dependent code (`formFiller.ts`, `cartDetector.ts`) that references `HTMLInputElement` — which doesn't exist in the React Native runtime. The `injectable` sub-path entry is safe (only strings), and that's the only runtime import used by the RN adapter.
+Metro bundles `@snap-fill/react-native` from **source** so changes are instant. But `@snap-fill/core` is consumed from **dist/** because its main entry (`index.ts`) re-exports DOM-dependent code (`formFiller.ts`, `cartDetector.ts`) that references `HTMLInputElement` — which doesn't exist in the React Native runtime. The `injectable` sub-path entry is safe (only strings), and that's the only runtime import used by the RN adapter.
 
 ## Running the Example
 
@@ -26,7 +26,7 @@ Metro bundles `@snapfill/react-native` from **source** so changes are instant. B
 # 1. Install dependencies
 pnpm install
 
-# 2. Build packages (required for @snapfill/core dist/)
+# 2. Build packages (required for @snap-fill/core dist/)
 pnpm build
 
 # 3. Start the example
@@ -38,11 +38,11 @@ Press `i` for iOS simulator or `a` for Android emulator.
 
 ## Development Workflow
 
-### Changing `@snapfill/react-native` (hook, component, types)
+### Changing `@snap-fill/react-native` (hook, component, types)
 
 Edit files in `packages/react-native/src/`. Metro bundles from source directly — changes appear instantly via hot reload. No build step needed during development.
 
-### Changing `@snapfill/core` (detection scripts, fill logic)
+### Changing `@snap-fill/core` (detection scripts, fill logic)
 
 Core changes require a rebuild because Metro reads from `dist/`. Run the build in watch mode in a separate terminal:
 
@@ -66,22 +66,22 @@ pnpm lint           # Lint all packages (via turbo)
 
 ## Why the `injectable.js` Shim Exists
 
-Metro doesn't support the `exports` field in `package.json`. When `@snapfill/react-native` imports `@snapfill/core/injectable`, Metro looks for a file at `packages/core/injectable` — the shim at `packages/core/injectable.js` redirects to `dist/injectable.js`.
+Metro doesn't support the `exports` field in `package.json`. When `@snap-fill/react-native` imports `@snap-fill/core/injectable`, Metro looks for a file at `packages/core/injectable` — the shim at `packages/core/injectable.js` redirects to `dist/injectable.js`.
 
 ```
-@snapfill/react-native
-    → import { buildFillScript } from '@snapfill/core/injectable'
+@snap-fill/react-native
+    → import { buildFillScript } from '@snap-fill/core/injectable'
     → Metro resolves: packages/core/injectable.js (shim)
     → require('./dist/injectable.js')
 ```
 
 Bundlers that support `exports` (webpack, esbuild, Vite) use the `package.json` exports map directly and never see the shim.
 
-## Why `@snapfill/core/injectable` Instead of `@snapfill/core`
+## Why `@snap-fill/core/injectable` Instead of `@snap-fill/core`
 
-The main `@snapfill/core` entry re-exports everything — including `fillForm()`, `scanForFields()`, and other functions that reference DOM globals (`HTMLInputElement`, `HTMLSelectElement`, `document`). These crash in React Native since there's no DOM.
+The main `@snap-fill/core` entry re-exports everything — including `fillForm()`, `scanForFields()`, and other functions that reference DOM globals (`HTMLInputElement`, `HTMLSelectElement`, `document`). These crash in React Native since there's no DOM.
 
-The `@snapfill/core/injectable` entry only exports:
+The `@snap-fill/core/injectable` entry only exports:
 - `formDetectorScript` — IIFE string for WebView injection
 - `cartDetectorScript` — IIFE string for WebView injection
 - `valueCaptureScript` — IIFE string for WebView injection
@@ -101,7 +101,7 @@ The example's `metro.config.js` configures:
 
 ## Key Design Decisions
 
-**Peer deps for RN packages**: `react`, `react-native`, and `react-native-webview` are peer dependencies of `@snapfill/react-native`, not regular or dev dependencies. This prevents pnpm from installing duplicate copies that break native module registration.
+**Peer deps for RN packages**: `react`, `react-native`, and `react-native-webview` are peer dependencies of `@snap-fill/react-native`, not regular or dev dependencies. This prevents pnpm from installing duplicate copies that break native module registration.
 
 **`WebViewLike` interface**: The `useSnapfill` hook accepts any ref with `{ injectJavaScript }` instead of the concrete `WebView` class. This avoids version coupling between the adapter and `react-native-webview`.
 

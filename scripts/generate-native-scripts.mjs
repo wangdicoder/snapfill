@@ -2,7 +2,7 @@
 
 /**
  * Generates JavaScript assets for native Android and iOS libraries.
- * Run after building @snapfill/core: `node scripts/generate-native-scripts.mjs`
+ * Run after building @snap-fill/core: `node scripts/generate-native-scripts.mjs`
  */
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
@@ -12,18 +12,18 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 
-// Import from the built @snapfill/core injectable entry
+// Import from the built @snap-fill/core injectable entry
 const coreDist = join(root, 'packages/core/dist/injectable.mjs');
 const mod = await import(coreDist);
 
 const { snapfillScript, fillScriptTemplate } = mod;
 
 if (!snapfillScript) {
-  console.error('ERROR: snapfillScript not found in @snapfill/core/injectable');
+  console.error('ERROR: snapfillScript not found in @snap-fill/core/injectable');
   process.exit(1);
 }
 if (!fillScriptTemplate) {
-  console.error('ERROR: fillScriptTemplate not found in @snapfill/core/injectable');
+  console.error('ERROR: fillScriptTemplate not found in @snap-fill/core/injectable');
   process.exit(1);
 }
 

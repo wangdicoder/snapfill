@@ -1,4 +1,4 @@
-import type { AutofillMessage } from '@snapfill/core';
+import type { AutofillMessage } from '@snap-fill/core';
 
 const VALID_TYPES = new Set([
   'formDetected',

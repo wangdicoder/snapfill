@@ -1,6 +1,6 @@
 # Form Filling
 
-Functions for filling form fields using native property setters. Import from `@snapfill/core`.
+Functions for filling form fields using native property setters. Import from `@snap-fill/core`.
 
 ## `fillForm(fieldMap, mappings)`
 
@@ -20,7 +20,7 @@ Fills form fields using a field map from [`scanForFields`](/api/form-detection#s
 **Returns:** [`FillResult`](/api/types#fillresult) with counts of filled/total fields and a list of failed field names
 
 ```ts
-import { scanForFields, fillForm } from '@snapfill/core';
+import { scanForFields, fillForm } from '@snap-fill/core';
 
 const { fieldMap } = scanForFields();
 

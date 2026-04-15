@@ -1,7 +1,7 @@
 {
-  "name": "@snapfill/react-native",
+  "name": "@snap-fill/react-native",
   "version": "0.1.0",
-  "description": "React Native WebView adapter for @snapfill/core — hook and drop-in component",
+  "description": "React Native WebView adapter for @snap-fill/core — hook and drop-in component",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -23,7 +23,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@snapfill/core": "workspace:*"
+    "@snap-fill/core": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18",

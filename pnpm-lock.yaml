@@ -32,7 +32,7 @@ importers:
       '@babel/runtime':
         specifier: ^7.28.0
         version: 7.28.6
-      '@snapfill/react-native':
+      '@snap-fill/react-native':
         specifier: workspace:*
         version: link:../../packages/react-native
       expo:
@@ -81,7 +81,7 @@ importers:
 
   packages/react-native:
     dependencies:
-      '@snapfill/core':
+      '@snap-fill/core':
         specifier: workspace:*
         version: link:../core
       react:
@@ -109,7 +109,7 @@ importers:
 
   website:
     dependencies:
-      '@snapfill/core':
+      '@snap-fill/core':
         specifier: workspace:*
         version: link:../packages/core
     devDependencies:

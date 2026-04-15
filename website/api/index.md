@@ -2,9 +2,9 @@
 
 ## Package Exports
 
-`@snapfill/core` provides two entry points:
+`@snap-fill/core` provides two entry points:
 
-### Main Entry (`@snapfill/core`)
+### Main Entry (`@snap-fill/core`)
 
 Functions for direct use in a web page — tree-shakeable, no side effects:
 
@@ -14,7 +14,7 @@ Functions for direct use in a web page — tree-shakeable, no side effects:
 - [Types](/api/types) — `AutofillFieldType`, `AutofillMappings`, `AutofillMessage`, etc.
 - [Constants](/api/form-detection#constants) — `AUTOCOMPLETE_MAP`, `REGEX_PATTERNS`, `TYPE_MAP`
 
-### Injectable Entry (`@snapfill/core/injectable`)
+### Injectable Entry (`@snap-fill/core/injectable`)
 
 Pre-built script strings for WebView injection:
 
@@ -27,7 +27,7 @@ Pre-built script strings for WebView injection:
 Use the injectable entry to inject scripts into a WebView and communicate via messages. Best for native apps (React Native, Android, iOS).
 
 ```ts
-import { snapfillScript, buildFillScript } from '@snapfill/core/injectable';
+import { snapfillScript, buildFillScript } from '@snap-fill/core/injectable';
 ```
 
 ### Pattern 2: Direct Web Use
@@ -35,5 +35,5 @@ import { snapfillScript, buildFillScript } from '@snapfill/core/injectable';
 Use the main entry for direct DOM access in a web page or browser extension. Functions are tree-shakeable.
 
 ```ts
-import { scanForFields, fillForm } from '@snapfill/core';
+import { scanForFields, fillForm } from '@snap-fill/core';
 ```

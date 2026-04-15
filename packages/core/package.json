@@ -1,5 +1,5 @@
 {
-  "name": "@snapfill/core",
+  "name": "@snap-fill/core",
   "version": "0.1.0",
   "description": "Core autofill detection, classification, and filling engine for WebViews",
   "license": "MIT",

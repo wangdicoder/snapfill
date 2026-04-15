@@ -6,7 +6,7 @@ SnapFill is built as a core JavaScript engine with thin platform adapters:
 
 ```
 packages/
-├── core/src/                  # @snapfill/core — JS engine
+├── core/src/                  # @snap-fill/core — JS engine
 │   ├── detectors/
 │   │   ├── formDetector       # Field detection + classification
 │   │   ├── cartDetector       # Shopping cart extraction

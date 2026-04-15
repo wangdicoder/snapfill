@@ -1,12 +1,12 @@
 # Android
 
-`@snapfill/android` is a Kotlin library for integrating SnapFill with Android `WebView`. Requires Android 7.0+ (API 24).
+`@snap-fill/android` is a Kotlin library for integrating SnapFill with Android `WebView`. Requires Android 7.0+ (API 24).
 
 ## Setup
 
 ### 1. Generate JavaScript Assets
 
-The JS assets must be generated from `@snapfill/core` before building:
+The JS assets must be generated from `@snap-fill/core` before building:
 
 ```bash
 pnpm install
